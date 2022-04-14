@@ -23,7 +23,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         Ray ray = new Ray(transform.position, _player.transform.position - transform.position);
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, detectionRange))
+        if (Physics.Raycast(ray, out hitInfo, detectionRange) && hitInfo.collider.CompareTag("Player"))
         {
             if ((_player.transform.position - transform.position).magnitude >= acceptanceRadius)
             {
