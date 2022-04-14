@@ -18,23 +18,6 @@ public class PlayerController : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
     }
 
-   
-    void Update()
-    {
-        //Shader.SetGlobalVector("WS_PlayerPosition", transform.position);
-
-        // if (!Input.GetMouseButtonDown(0))
-        //     return;
-        //
-        // Ray cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
-        //
-        // RaycastHit hitInfo;
-        // if (Physics.Raycast(cameraRay, out hitInfo, _rayMaxDistance, _groundLayer.value))
-        // {
-        //     _agent.SetDestination(hitInfo.point);
-        // }
-    }
-
     void OnRightClick()
     {
         Ray cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
