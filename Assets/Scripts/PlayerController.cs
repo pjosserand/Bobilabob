@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,6 +20,11 @@ public class PlayerController : MonoBehaviour
     {
         _mainCamera = Camera.main;    
         _agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Update()
+    {
+        Shader.SetGlobalVector("worldSpace_PlayerPos",transform.position);
     }
 
     void OnRightClick()
