@@ -7,12 +7,12 @@
             "actions": [
                 {
                     "name": "RightClick",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "bcf2df41-8b94-4c12-a10c-5b5c20e8bbdc",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
