@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         _animator.SetFloat("Velocity", Math.Abs(_agent.velocity.x + _agent.velocity.z));
+		Shader.SetGlobalVector("worldSpace_PlayerPos",transform.position);
     }
 
     void OnRightClick(InputValue prminput)
