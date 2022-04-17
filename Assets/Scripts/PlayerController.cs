@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     private Camera _mainCamera;
     private NavMeshAgent _agent;
     public Animator _animator;
+    private bool isAttacking;
 
     void Start()
     {
@@ -39,15 +40,51 @@ public class PlayerController : MonoBehaviour
             CancelInvoke();
         }
     }
+    
+    void OnLeftClick(InputValue prminput)
+        {
+        Debug.Log("Left clicked");
+            attack();           
+            /*
+            if (prminput.isPressed)
+            {
+               InvokeRepeating(nameof(attack), 0f, 0.2f );
+            }
+            else
+            {
+                CancelInvoke();
+            }*/
+        }
 
+    void attack()
+    {
+        //Stop Moving Character
+        _agent.SetDestination(transform.position);
+        //Call animations
+         Debug.Log("Attack !!!");
+         isAttacking=true;
+        _animator.SetBool("isAttacking", isAttacking);
+        Invoke(nameof(stopAttack),1f);
+    }
+    
+    void stopAttack()
+    {
+       Debug.Log("Stop Attack !!!");
+       isAttacking=false;
+       _animator.SetBool("isAttacking", isAttacking);
+    }
+    
     void move()
     {
-        Ray cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hitInfo;
-        if (Physics.Raycast(cameraRay, out hitInfo, _rayMaxDistance, _groundLayer.value))
+        if(!isAttacking)
         {
-            _agent.SetDestination(hitInfo.point);
+            Ray cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
+        
+                RaycastHit hitInfo;
+                if (Physics.Raycast(cameraRay, out hitInfo, _rayMaxDistance, _groundLayer.value))
+                {
+                    _agent.SetDestination(hitInfo.point);
+                }
         }
     }
 
