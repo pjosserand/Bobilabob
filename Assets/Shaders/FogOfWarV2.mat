@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Elvyn_Blur
-  m_Shader: {fileID: 4800000, guid: 37c23252c5ec0884599acdc213ab0bbd, type: 3}
+  m_Name: FogOfWarV2
+  m_Shader: {fileID: 4800000, guid: 18d055f6a91c1a94ebf9b37322c623a9, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -20,11 +20,11 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _RenderTexture:
-        m_Texture: {fileID: 8400000, guid: 9cf1dc325ae410a4ea4a4df6c878533f, type: 2}
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: f1de0460afd04b642a261aef2e069024, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _noiseMap:
+    - _Distortion:
         m_Texture: {fileID: 2800000, guid: 9c457b986bd426144b3023b28550306b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -33,20 +33,21 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - noiseMap:
-        m_Texture: {fileID: 2800000, guid: 9c457b986bd426144b3023b28550306b, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Intensity: -0.2
-    - _distorsion: 0.464
-    - _radius: 5.88
+    - _DiscolorationDarkness: 1
+    - _DiscolorationFactor: 1
+    - _Radius: 7
+    - _Threshold: 0.11
     - darkness: 0
-    - distorsion: 0.1
-    - radius: 0
+    - distorsion: 0
+    - radius: 3.32
+    - time: 0
     m_Colors:
-    - _speed: {r: 0, g: 0, b: 0, a: 0}
     - darknessColor: {r: 0, g: 0, b: 0, a: 0}
     - mainColor: {r: 1, g: 1, b: 1, a: 1}
-    - speed: {r: 0.2, g: 0, b: 0, a: 0}
+    - speed: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
