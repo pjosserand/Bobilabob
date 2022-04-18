@@ -16,17 +16,27 @@ public class PlayerController : MonoBehaviour
     private NavMeshAgent _agent;
     public Animator _animator;
     private bool isAttacking;
+    public float delayAttack;
+    public float maxDelayAttack;
+    private int damage =1;
 
     void Start()
     {
         _mainCamera = Camera.main;
         _agent = GetComponent<NavMeshAgent>();
+        maxDelayAttack = 5.0f;
     }
 
     private void Update()
     {
         _animator.SetFloat("Velocity", Math.Abs(_agent.velocity.x + _agent.velocity.z));
 		Shader.SetGlobalVector("worldSpace_PlayerPos",transform.position);
+        if (delayAttack <= 0) return;
+        delayAttack -= Time.deltaTime;
+        if (delayAttack <= 0)
+        {
+            delayAttack = 0;
+        }
     }
 
     void OnRightClick(InputValue prminput)
@@ -43,7 +53,7 @@ public class PlayerController : MonoBehaviour
     
     void OnLeftClick(InputValue prminput)
         {
-            Debug.Log("Left clicked");
+            //Debug.Log("Left clicked");
             attack();
         }
 
@@ -52,7 +62,7 @@ public class PlayerController : MonoBehaviour
         //Stop Moving Character
         _agent.SetDestination(transform.position);
         //Call animations
-         Debug.Log("Attack !!!");
+         //Debug.Log("Attack !!!");
          isAttacking=true;
         _animator.SetBool("isAttacking", isAttacking);
         Invoke(nameof(stopAttack),1f);
@@ -60,7 +70,7 @@ public class PlayerController : MonoBehaviour
     
     void stopAttack()
     {
-       Debug.Log("Stop Attack !!!");
+       //Debug.Log("Stop Attack !!!");
        isAttacking=false;
        _animator.SetBool("isAttacking", isAttacking);
     }
@@ -83,10 +93,18 @@ public class PlayerController : MonoBehaviour
     void Damage(int prmDamageValue)
     {
         lifePoints -= prmDamageValue;
-
         if (lifePoints <= 0)
         {
             Death();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Door"))
+        {
+            if (!isAttacking) return;
+            other.gameObject.GetComponent<DoorScript>().takeDamage(damage);
         }
     }
 
