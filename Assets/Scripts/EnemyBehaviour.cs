@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,12 +11,14 @@ public class EnemyBehaviour : MonoBehaviour
 
     private GameObject _player;
     private NavMeshAgent _navMeshAgent;
+    private Animator _anim;
 
     // Start is called before the first frame update
     void Start()
     {
         _player = GameObject.FindWithTag("Player");
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,6 +28,7 @@ public class EnemyBehaviour : MonoBehaviour
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, detectionRange) && hitInfo.collider.CompareTag("Player"))
         {
+
             if ((_player.transform.position - transform.position).magnitude >= acceptanceRadius)
             {
                 _navMeshAgent.SetDestination(_player.transform.position);
@@ -39,7 +43,7 @@ public class EnemyBehaviour : MonoBehaviour
             _navMeshAgent.SetDestination(transform.position);
         }
     }
-
+    
     void Attack()
     {
         

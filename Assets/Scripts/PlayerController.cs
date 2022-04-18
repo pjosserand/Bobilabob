@@ -43,17 +43,8 @@ public class PlayerController : MonoBehaviour
     
     void OnLeftClick(InputValue prminput)
         {
-        Debug.Log("Left clicked");
-            attack();           
-            /*
-            if (prminput.isPressed)
-            {
-               InvokeRepeating(nameof(attack), 0f, 0.2f );
-            }
-            else
-            {
-                CancelInvoke();
-            }*/
+            Debug.Log("Left clicked");
+            attack();
         }
 
     void attack()
