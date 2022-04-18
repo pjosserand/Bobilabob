@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public int lifePoints;
-
+    public int maxLifePoints;
+    
     [Range(1f, 50f)] [SerializeField] private float _rayMaxDistance = 20f;
 
     [SerializeField] LayerMask _groundLayer;
@@ -15,11 +16,15 @@ public class PlayerController : MonoBehaviour
     private Camera _mainCamera;
     private NavMeshAgent _agent;
     public Animator _animator;
+    private bool isAttacking;
+    private int damage =1;
 
     void Start()
     {
         _mainCamera = Camera.main;
         _agent = GetComponent<NavMeshAgent>();
+        maxLifePoints = 4;
+        lifePoints = maxLifePoints;
     }
 
     private void Update()
@@ -39,15 +44,42 @@ public class PlayerController : MonoBehaviour
             CancelInvoke();
         }
     }
+    
+    void OnLeftClick(InputValue prminput)
+        {
+            //Debug.Log("Left clicked");
+            attack();
+        }
 
+    void attack()
+    {
+        //Stop Moving Character
+        _agent.SetDestination(transform.position);
+        //Call animations
+         //Debug.Log("Attack !!!");
+         isAttacking=true;
+        _animator.SetBool("isAttacking", isAttacking);
+        Invoke(nameof(stopAttack),1f);
+    }
+    
+    void stopAttack()
+    {
+       //Debug.Log("Stop Attack !!!");
+       isAttacking=false;
+       _animator.SetBool("isAttacking", isAttacking);
+    }
+    
     void move()
     {
-        Ray cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
-
-        RaycastHit hitInfo;
-        if (Physics.Raycast(cameraRay, out hitInfo, _rayMaxDistance, _groundLayer.value))
+        if(!isAttacking)
         {
-            _agent.SetDestination(hitInfo.point);
+            Ray cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
+        
+                RaycastHit hitInfo;
+                if (Physics.Raycast(cameraRay, out hitInfo, _rayMaxDistance, _groundLayer.value))
+                {
+                    _agent.SetDestination(hitInfo.point);
+                }
         }
     }
 
@@ -55,10 +87,40 @@ public class PlayerController : MonoBehaviour
     void Damage(int prmDamageValue)
     {
         lifePoints -= prmDamageValue;
-
         if (lifePoints <= 0)
         {
             Death();
+        }
+    }
+
+    void UpdateLife(int addToLife)
+    {
+        lifePoints += addToLife;
+        if (lifePoints > maxLifePoints)
+        {
+            lifePoints = maxLifePoints;
+        }
+        else if (lifePoints <= 0)
+        {
+            Death();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Apple"))
+        {
+            UpdateLife(1);
+            other.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Door"))
+        {
+            if (!isAttacking) return;
+            other.gameObject.GetComponent<DoorScript>().takeDamage(damage);
         }
     }
 
