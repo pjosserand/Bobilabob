@@ -31,21 +31,19 @@ public class DoorScript : MonoBehaviour
     public void takeDamage(int damage)
     {
         Debug.Log("Player hit the door");
-        if (coolDown == 0)
-        {
-            UpdateLife(-damage);
-        }
+        if (coolDown > 0) return;
+        UpdateLife(-damage);
         coolDown = maxCoolDown;
         //LaunchParticules
     }
     
     void UpdateLife(int addToLife)
     {
-        if (life > 0) return;
         life += addToLife;
         if (life <= 0)
         {
-            Debug.Log("Door is opened");
+            //Debug.Log("Door is opened");
+            door.gameObject.SetActive(false);
             door.enabled = false;
         }
     }
