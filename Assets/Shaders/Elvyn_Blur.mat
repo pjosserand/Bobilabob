@@ -39,8 +39,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _Intensity: -0.2
-    - _distorsion: 0.1
-    - _radius: 3.58
+    - _distorsion: 0.464
+    - _radius: 2.9
     - darkness: 0
     - distorsion: 0.1
     - radius: 0
