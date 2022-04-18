@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public int lifePoints;
-
+    public int maxLifePoints;
+    
     [Range(1f, 50f)] [SerializeField] private float _rayMaxDistance = 20f;
 
     [SerializeField] LayerMask _groundLayer;
@@ -16,27 +17,20 @@ public class PlayerController : MonoBehaviour
     private NavMeshAgent _agent;
     public Animator _animator;
     private bool isAttacking;
-    public float delayAttack;
-    public float maxDelayAttack;
     private int damage =1;
 
     void Start()
     {
         _mainCamera = Camera.main;
         _agent = GetComponent<NavMeshAgent>();
-        maxDelayAttack = 5.0f;
+        maxLifePoints = 4;
+        lifePoints = maxLifePoints;
     }
 
     private void Update()
     {
         _animator.SetFloat("Velocity", Math.Abs(_agent.velocity.x + _agent.velocity.z));
 		Shader.SetGlobalVector("worldSpace_PlayerPos",transform.position);
-        if (delayAttack <= 0) return;
-        delayAttack -= Time.deltaTime;
-        if (delayAttack <= 0)
-        {
-            delayAttack = 0;
-        }
     }
 
     void OnRightClick(InputValue prminput)
@@ -96,6 +90,28 @@ public class PlayerController : MonoBehaviour
         if (lifePoints <= 0)
         {
             Death();
+        }
+    }
+
+    void UpdateLife(int addToLife)
+    {
+        lifePoints += addToLife;
+        if (lifePoints > maxLifePoints)
+        {
+            lifePoints = maxLifePoints;
+        }
+        else if (lifePoints <= 0)
+        {
+            Death();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Apple"))
+        {
+            UpdateLife(1);
+            other.gameObject.SetActive(false);
         }
     }
 
