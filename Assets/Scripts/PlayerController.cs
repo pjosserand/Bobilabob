@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     public int lifePoints;
     public int maxLifePoints;
+    public Material portalMaterial;
     
     [Range(1f, 50f)] [SerializeField] private float _rayMaxDistance = 20f;
 
@@ -25,12 +26,15 @@ public class PlayerController : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         maxLifePoints = 4;
         lifePoints = maxLifePoints;
+       
     }
 
     private void Update()
     {
         _animator.SetFloat("Velocity", Math.Abs(_agent.velocity.x + _agent.velocity.z));
-		Shader.SetGlobalVector("worldSpace_PlayerPos",transform.position);
+		Shader.SetGlobalVector("_PlayerPos",transform.position);
+        //int _PlayerPos_ID = Shader.PropertyToID("_PlayerPos");
+		//portalMaterial.SetVector(_PlayerPos_ID,transform.position);
     }
 
     void OnRightClick(InputValue prminput)

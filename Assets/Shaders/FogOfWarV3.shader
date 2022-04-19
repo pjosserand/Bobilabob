@@ -23,7 +23,8 @@ Shader "Learning/Unlit/FogOfWarV3"
 
             #include "UnityCG.cginc"
             sampler2D _Albedo, _Distortion; //_Normal;
-			float3 worldSpace_PlayerPos;
+			float3 _PlayerPos;
+			float4 _Albedo_ST;
 			float _Radius, _GSPower,  _Threshold;
 			
 			struct vertexInput
@@ -57,13 +58,14 @@ Shader "Learning/Unlit/FogOfWarV3"
             {
                 //half ReNormFactor = 1.0 / length(i.normal);
                 float4 Color = float4(0,0,0,0);
-                float4 Texture = tex2D(_Albedo, i.uv);
+                float4 Texture = tex2D(_Albedo, float2((i.uv.x+_Albedo_ST.z)*_Albedo_ST.x,(i.uv.y+_Albedo_ST.w)*_Albedo_ST.y ));
 
                 
                 
-                float dist = distance(worldSpace_PlayerPos, i.vertexWorldSpace);
+                float dist = distance(_PlayerPos, i.vertexWorldSpace);
                 float4 temp = lerp(Texture, (Texture.r+Texture.g+Texture.b)/3, clamp(dist * dist * _GSPower, 0, 1));
                 Color = lerp(temp, float4(0,0,0,0), clamp((dist-_GSPower)/(_Radius-_GSPower), 0, 1));
+                
                 
                 if(Color.w = 0)
                 {
