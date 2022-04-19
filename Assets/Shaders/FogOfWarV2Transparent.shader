@@ -42,7 +42,7 @@ Shader "Learning/Unlit/FogOfWarV2Transparent"
                 float4 vertex : SV_POSITION;
                 float2 uv: TEXCOORD0;
                 float4 vertexWorldSpace : TEXCOORD1;
-                float4 Color : COLOR;
+                //float4 Color : COLOR;
             };
 
             v2f vert (vertexInput v)
@@ -50,7 +50,6 @@ Shader "Learning/Unlit/FogOfWarV2Transparent"
                 v2f o;
 	            o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
                 o.vertexWorldSpace = mul(unity_ObjectToWorld,v.vertex);
-                o.
                 o.uv=v.uv;
                 return o;
             }
