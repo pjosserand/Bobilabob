@@ -1,4 +1,4 @@
-Shader "Learning/Unlit/FogOfWarV2"
+Shader "Learning/Unlit/FogOfWarV3"
 {
     Properties
     {   
@@ -7,8 +7,8 @@ Shader "Learning/Unlit/FogOfWarV2"
         //_Normal("Normal",2D) = "white"{}
         _Distortion("Distortion Texture", 2D) = "white"{}
         _Radius("Fog of War Radius",Range(0.0,7.0)) = 0.0
-        _DiscolorationDarkness("Fog of War Darkness",Range(1.0,0.0)) = 0.0
-        _Threshold("Alpha Threshold", Range(0,1)) = 0.0
+        _GSPower("Gayscale power",Range(0,1)) = 0.0
+        _Threshold("Alpha Threshold", Float) = 0.0
     }
     
     SubShader
@@ -24,7 +24,7 @@ Shader "Learning/Unlit/FogOfWarV2"
             #include "UnityCG.cginc"
             sampler2D _Albedo, _Distortion; //_Normal;
 			float3 worldSpace_PlayerPos;
-			float _Radius, _DiscolorationDarkness,  _Threshold;
+			float _Radius, _GSPower,  _Threshold;
 			
 			struct vertexInput
             {
@@ -56,32 +56,20 @@ Shader "Learning/Unlit/FogOfWarV2"
             float4 frag(v2f i) : SV_Target
             {
                 //half ReNormFactor = 1.0 / length(i.normal);
-                float4 Color = (0,0,0,0);
+                float4 Color = float4(0,0,0,0);
                 float4 Texture = tex2D(_Albedo, i.uv);
 
                 
                 
-                float dist = distance(worldSpace_PlayerPos,i.vertexWorldSpace);
-                if(dist<=_Radius)
+                float dist = distance(worldSpace_PlayerPos, i.vertexWorldSpace);
+                float4 temp = lerp(Texture, (Texture.r+Texture.g+Texture.b)/3, clamp(dist * dist * _GSPower, 0, 1));
+                Color = lerp(temp, float4(0,0,0,0), clamp((dist-_GSPower)/(_Radius-_GSPower), 0, 1));
+                
+                if(Color.w = 0)
                 {
-                    Color = Texture;
+                    discard;
                 }
-                else
-                {
-                                       
-                    if (tex2D(_Distortion, i.uv).r >= _Threshold)
-                    {
-                        float4 Tex = tex2D(_Distortion, i.uv * 5);
-                        
-                        Color = (Tex.r+Tex.g+Tex.b) * _DiscolorationDarkness /3;
-                    }
-                    else
-                    {
-                        Color = (Texture.r+Texture.g+Texture.b) * _DiscolorationDarkness /3;
-                    }
-                    
-                    
-                }
+                
                 return Color; 
             }
             
