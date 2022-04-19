@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Door"))
         {
             if (!isAttacking) return;
-            other.gameObject.GetComponent<DoorScript>().takeDamage(damage);
+            other.gameObject.GetComponent<DoorScript>().TakeDamage(damage);
         }
     }
 

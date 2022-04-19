@@ -62,9 +62,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 2
-  door: {fileID: 4992961820886749636}
   coolDown: 0
   maxCoolDown: 0
+  dissolveTime: 0
+  maxDissolveTime: 1
+  startDissolveName: 
+  updateDissolveName: 
 --- !u!1 &4998204313056318205
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +130,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a79fd100eebc3e946a5d6df1a792fe30, type: 2}
+  - {fileID: 2100000, guid: 5b169c0fd24bacd42952669d68f6d489, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,7 +227,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 52c326e58d79dae4b84c4fe3a0970284, type: 2}
+  - {fileID: 2100000, guid: 2779b6987e496424cac5bed12e152199, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
