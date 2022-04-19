@@ -1,4 +1,4 @@
-Shader "Learning/Unlit/FogOfWarV2"
+Shader "Learning/Unlit/FogOfWarV2Transparent"
 {
     Properties
     {   
@@ -12,6 +12,13 @@ Shader "Learning/Unlit/FogOfWarV2"
     
     SubShader
     {
+        
+        Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        Cull front 
+        LOD 100
+        
         Pass
         {
 			HLSLPROGRAM
@@ -35,7 +42,7 @@ Shader "Learning/Unlit/FogOfWarV2"
                 float4 vertex : SV_POSITION;
                 float2 uv: TEXCOORD0;
                 float4 vertexWorldSpace : TEXCOORD1;
-                
+                float4 Color : COLOR;
             };
 
             v2f vert (vertexInput v)
@@ -43,6 +50,7 @@ Shader "Learning/Unlit/FogOfWarV2"
                 v2f o;
 	            o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
                 o.vertexWorldSpace = mul(unity_ObjectToWorld,v.vertex);
+                o.
                 o.uv=v.uv;
                 return o;
             }
