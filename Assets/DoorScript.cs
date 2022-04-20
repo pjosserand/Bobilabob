@@ -8,7 +8,9 @@ using UnityEngine.Serialization;
 public class DoorScript : MonoBehaviour
 {
     public int life;
+    [SerializeField]
     private Material _doorMat;
+    [SerializeField]
     private Material _glassMat;
     private NavMeshObstacle _doorObstacle;
     public float coolDown;
@@ -16,7 +18,6 @@ public class DoorScript : MonoBehaviour
 
     public float dissolveTime;
     public float maxDissolveTime;
-    public string startDissolveName;
     public string updateDissolveName;
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,6 @@ public class DoorScript : MonoBehaviour
         maxCoolDown = 1.0f;
         maxDissolveTime = 1.0f;
         dissolveTime = maxDissolveTime+0.1f;
-        //startDissolveName = "_HasToDissolve";
         updateDissolveName = "_DissolveAmmount";
         _doorObstacle = transform.GetChild(1).gameObject.GetComponent<NavMeshObstacle>();
         _doorMat = transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material;

@@ -18,7 +18,11 @@
     ],
     "m_Keywords": [],
     "m_Dropdowns": [],
-    "m_CategoryData": [],
+    "m_CategoryData": [
+        {
+            "m_Id": "b4ec32b575354ae6bfd4b303e01d593a"
+        }
+    ],
     "m_Nodes": [
         {
             "m_Id": "3280b57c75374c3ba10db6c56f7ea3b6"
@@ -464,9 +468,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 352.99993896484377,
-            "y": -628.9999389648438,
-            "width": 208.0001220703125,
+            "x": 449.0,
+            "y": -708.0,
+            "width": 208.0,
             "height": 302.0
         }
     },
@@ -651,10 +655,10 @@
     "m_Guid": {
         "m_GuidSerialized": "aef43b0e-60bb-4c8c-bf33-5e02226e3470"
     },
-    "m_Name": "Vector4",
+    "m_Name": "Color",
     "m_DefaultRefNameVersion": 1,
-    "m_RefNameGeneratedByDisplayName": "Vector4",
-    "m_DefaultReferenceName": "_Vector4",
+    "m_RefNameGeneratedByDisplayName": "Color",
+    "m_DefaultReferenceName": "_Color",
     "m_OverrideReferenceName": "",
     "m_GeneratePropertyBlock": true,
     "m_UseCustomSlotLabel": false,
@@ -778,7 +782,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "18fb7f6f6d11457eb30a3361a908430f",
     "m_Id": 0,
-    "m_DisplayName": "Vector4",
+    "m_DisplayName": "Color",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1967,10 +1971,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 407.99993896484377,
-            "y": -440.9998779296875,
-            "width": 0.0,
-            "height": 0.0
+            "x": 150.00001525878907,
+            "y": -708.0,
+            "width": 105.00001525878906,
+            "height": 34.0
         }
     },
     "m_Slots": [
@@ -1988,6 +1992,27 @@
     "m_Property": {
         "m_Id": "10d9d328959c4aabb4c0da2058f123a9"
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.CategoryData",
+    "m_ObjectId": "b4ec32b575354ae6bfd4b303e01d593a",
+    "m_Name": "",
+    "m_ChildObjectList": [
+        {
+            "m_Id": "8a1e4c653641454289afe839abe49f03"
+        },
+        {
+            "m_Id": "5a496e811a9d41bbaf5e29d5dc2711ed"
+        },
+        {
+            "m_Id": "e8aebf9c2ded40948dbbfe5c05f52724"
+        },
+        {
+            "m_Id": "10d9d328959c4aabb4c0da2058f123a9"
+        }
+    ]
 }
 
 {
