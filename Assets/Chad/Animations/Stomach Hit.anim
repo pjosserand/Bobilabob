@@ -23690,8 +23690,7 @@ AnimationClip:
   - time: 1.1
     functionName: HitEnd
     data: 
-    objectReferenceParameter: {fileID: 3491339681751745515, guid: 4ea19043b01836e4eae86d89105ce055,
-      type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
