@@ -17,20 +17,21 @@ public class PlayerController : MonoBehaviour
     private NavMeshAgent _agent;
     public Animator _animator;
     private bool isAttacking;
-    private int damage =1;
+    private int damage = 1;
+    private Vector3 _destinationPres;
 
     void Start()
     {
         _mainCamera = Camera.main;
         _agent = GetComponent<NavMeshAgent>();
-        maxLifePoints = 4;
+        maxLifePoints = 18;
         lifePoints = maxLifePoints;
     }
 
     private void Update()
     {
         _animator.SetFloat("Velocity", Math.Abs(_agent.velocity.x + _agent.velocity.z));
-		Shader.SetGlobalVector("worldSpace_PlayerPos",transform.position);
+        Shader.SetGlobalVector("worldSpace_PlayerPos",transform.position);
     }
 
     void OnRightClick(InputValue prminput)
@@ -54,6 +55,10 @@ public class PlayerController : MonoBehaviour
     void attack()
     {
         //Stop Moving Character
+        if (_agent.destination != null)
+        {
+            _destinationPres = _agent.destination;
+        }
         _agent.SetDestination(transform.position);
         //Call animations
          //Debug.Log("Attack !!!");
@@ -66,6 +71,10 @@ public class PlayerController : MonoBehaviour
     {
        //Debug.Log("Stop Attack !!!");
        isAttacking=false;
+       if (_destinationPres != null)
+       {
+           _agent.destination = _destinationPres;
+       }
        _animator.SetBool("isAttacking", isAttacking);
     }
     
@@ -84,12 +93,17 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    void Damage(int prmDamageValue)
+    public void Damage()
     {
-        lifePoints -= prmDamageValue;
+        Debug.Log("hit");
+        lifePoints -= 1;
         if (lifePoints <= 0)
         {
             Death();
+        }
+        else
+        {
+            _animator.SetBool("Hit", true);
         }
     }
 
@@ -122,10 +136,23 @@ public class PlayerController : MonoBehaviour
             if (!isAttacking) return;
             other.gameObject.GetComponent<DoorScript>().takeDamage(damage);
         }
+        else if (other.CompareTag("Enemy"))
+        {
+            if (!isAttacking) return;
+            other.gameObject.GetComponent<EnemyBehaviour>().TakeDamage();
+        }
     }
 
     void Death()
     {
+        Debug.Log("dead");
+        _animator.SetBool("Dead", true);
+        _agent.SetDestination(transform.position);
         //DeathStuff
+    }
+
+    public void HitEnd()
+    {
+        _animator.SetBool("Hit", false);
     }
 }
