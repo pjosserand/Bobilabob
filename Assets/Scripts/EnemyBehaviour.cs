@@ -10,6 +10,7 @@ public class EnemyBehaviour : MonoBehaviour
     public float detectionRange;
 
     [SerializeField] PlayerController _player;
+    [SerializeField] ParticleSystem _particles;
     private NavMeshAgent _navMeshAgent;
     private Animator _anim;
     private int lifePoints;
@@ -67,6 +68,7 @@ public class EnemyBehaviour : MonoBehaviour
     public void TakeDamage()
     {
         lifePoints -= 1;
+        _particles.Play();
         if (lifePoints <= 0)
         {
             Death();

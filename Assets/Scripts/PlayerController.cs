@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [Range(1f, 50f)] [SerializeField] private float _rayMaxDistance = 20f;
 
     [SerializeField] LayerMask _groundLayer;
+    [SerializeField] ParticleSystem _particles;
 
     private Camera _mainCamera;
     private NavMeshAgent _agent;
@@ -101,6 +102,7 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("hit");
         lifePoints -= 1;
+        _particles.Play();
         if (lifePoints <= 0)
         {
             Death();
