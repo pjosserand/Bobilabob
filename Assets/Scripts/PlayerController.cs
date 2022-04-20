@@ -113,18 +113,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("hit");
         lifePoints -= 1;
         _particles.Play();
-        switch (lifePoints){
-            case 3:
-                _bloodScreen.SetFloat("_Power", 2.0f);
-                break;
-            case 2:
-                _bloodScreen.SetFloat("_Power", 1.0f);
-                break;
-            case 1:
-                _bloodScreen.SetFloat("_Power", 0.5f);
-                break;
-
-        }
+        UpdateBloodScreen();
         if (lifePoints <= 0)
         {
             Death();
@@ -146,8 +135,25 @@ public class PlayerController : MonoBehaviour
         {
             Death();
         }
+        UpdateBloodScreen();
     }
 
+
+    public void UpdateBloodScreen()
+    {
+        switch (lifePoints){
+            case 3:
+                _bloodScreen.SetFloat("_Power", 2.0f);
+                break;
+            case 2:
+                _bloodScreen.SetFloat("_Power", 1.0f);
+                break;
+            case 1:
+                _bloodScreen.SetFloat("_Power", 0.5f);
+                break;
+
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Apple"))
