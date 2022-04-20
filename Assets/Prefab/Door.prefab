@@ -62,8 +62,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 2
-  _doorMat: {fileID: 0}
-  _glassMat: {fileID: 0}
   coolDown: 0
   maxCoolDown: 0
   dissolveTime: 0
@@ -81,7 +79,7 @@ GameObject:
   - component: {fileID: 4982034408502717663}
   - component: {fileID: 4976219509868033985}
   - component: {fileID: 5025570902143781036}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Door_01_C
   m_TagString: Untagged
   m_Icon: {fileID: 0}
