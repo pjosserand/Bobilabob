@@ -27,7 +27,7 @@ Material:
   - _ALPHATEST_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 1
-  m_EnableInstancingVariants: 1
+  m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2450
   stringTagMap:
@@ -85,5 +85,6 @@ Material:
     - _ZWrite: 1
     - _ZWriteControl: 0
     - _isDoor: 1
-    m_Colors: []
+    m_Colors:
+    - _VanishedColor: {r: 0.91933316, g: 0.9339623, b: 0.08370411, a: 0}
   m_BuildTextureStacks: []
