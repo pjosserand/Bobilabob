@@ -1549,7 +1549,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7765089, y: 1}
+    m_SensorSize: {x: 1.7785923, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -8374,8 +8374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 2
-  _doorMat: {fileID: 0}
-  _glassMat: {fileID: 0}
   coolDown: 0
   maxCoolDown: 0
   dissolveTime: 0

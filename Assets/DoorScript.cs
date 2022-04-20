@@ -8,9 +8,7 @@ using UnityEngine.Serialization;
 public class DoorScript : MonoBehaviour
 {
     public int life;
-    [SerializeField]
     private Material _doorMat;
-    [SerializeField]
     private Material _glassMat;
     private NavMeshObstacle _doorObstacle;
     public float coolDown;
@@ -31,8 +29,8 @@ public class DoorScript : MonoBehaviour
         _doorObstacle = transform.GetChild(1).gameObject.GetComponent<NavMeshObstacle>();
         _doorMat = transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material;
         _glassMat = transform.GetChild(1).gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material;
-        _doorMat.SetFloat(updateDissolveName,0);
-        _glassMat.SetFloat(updateDissolveName,0);
+        _doorMat.SetFloat(updateDissolveName,-0.1f);
+        _glassMat.SetFloat(updateDissolveName,-0.1f);
 
     }
 
