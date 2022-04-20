@@ -36,7 +36,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _CellDensity: 5
-    - _EmitionStrength: 0.06
+    - _EmitionStrength: 0.21
     - _GSPower: 0
     - _NoiseScale: 30
     - _NoiseStrength: 0.15
