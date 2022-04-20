@@ -36,14 +36,14 @@ Material:
     m_Ints: []
     m_Floats:
     - _CellDensity: 5
-    - _EmitionStrength: 0.21
-    - _GSPower: 0
+    - _EmitionStrength: 2
+    - _GSPower: 0.1
     - _NoiseScale: 30
     - _NoiseStrength: 0.15
     - _PointSize: 5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Radius: 7
+    - _Radius: 20
     - _Speed: 3.4
     - _TwirlPower: 25
     m_Colors:
