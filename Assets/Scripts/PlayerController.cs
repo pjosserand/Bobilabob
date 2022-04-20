@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] LayerMask _groundLayer;
     [SerializeField] ParticleSystem _particles;
+    [SerializeField] Material _bloodScreen;
+    
 
     private Camera _mainCamera;
     private NavMeshAgent _agent;
@@ -27,8 +29,9 @@ public class PlayerController : MonoBehaviour
     {
         _mainCamera = Camera.main;
         _agent = GetComponent<NavMeshAgent>();
-        maxLifePoints = 18;
+        maxLifePoints = 4;
         lifePoints = maxLifePoints;
+        _bloodScreen.SetFloat("_Power", 5.0f);
 
     }
 
@@ -110,6 +113,18 @@ public class PlayerController : MonoBehaviour
         Debug.Log("hit");
         lifePoints -= 1;
         _particles.Play();
+        switch (lifePoints){
+            case 3:
+                _bloodScreen.SetFloat("_Power", 2.0f);
+                break;
+            case 2:
+                _bloodScreen.SetFloat("_Power", 1.0f);
+                break;
+            case 1:
+                _bloodScreen.SetFloat("_Power", 0.5f);
+                break;
+
+        }
         if (lifePoints <= 0)
         {
             Death();

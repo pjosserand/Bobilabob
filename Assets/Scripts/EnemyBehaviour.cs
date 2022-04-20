@@ -22,6 +22,7 @@ public class EnemyBehaviour : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _anim = GetComponent<Animator>();
         lifePoints = 2;
+        _player = GameObject.FindWithTag("Player").gameObject.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
