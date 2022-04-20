@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private Camera _mainCamera;
     private NavMeshAgent _agent;
     public Animator _animator;
+    public EnemyBehaviour _enemy;
     private bool isAttacking;
     private int damage = 1;
     private Vector3 _destinationPres;
@@ -59,10 +60,16 @@ public class PlayerController : MonoBehaviour
 
     void attack()
     {
+        Debug.Log("attack");
         //Stop Moving Character
         if (_agent.destination != null)
         {
             _destinationPres = _agent.destination;
+        }
+
+        if (_enemy != null)
+        {
+            _enemy.TakeDamage();
         }
         _agent.SetDestination(transform.position);
         //Call animations

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -29,7 +30,7 @@ public class EnemyBehaviour : MonoBehaviour
         _anim.SetFloat("Speed", Math.Abs(_navMeshAgent.velocity.x + _navMeshAgent.velocity.z));
         Ray ray = new Ray(transform.position, _player.transform.position - transform.position);
         RaycastHit hitInfo;
-        if (!_anim.GetBool("Attack"))
+        if (!_anim.GetBool("Attack") && _navMeshAgent.enabled)
         {
             if (Physics.Raycast(ray, out hitInfo, detectionRange) && hitInfo.collider.CompareTag("Player"))
             {
@@ -67,18 +68,34 @@ public class EnemyBehaviour : MonoBehaviour
     }
     public void TakeDamage()
     {
-        lifePoints -= 1;
-        _particles.Play();
-        if (lifePoints <= 0)
+        if (!_anim.GetBool("Hit"))
         {
-            Death();
+            lifePoints -= 1;
+            _particles.Play();
+            if (lifePoints <= 0)
+            {
+                Death();
+            }
+
+            _anim.SetBool("Hit", true);
         }
-        _anim.SetBool("Hit", true);
     }
 
     private void Death()
     {
+        _navMeshAgent.enabled = false;
+        _particles = null;
         _anim.SetBool("Dead", true);
+    }
+
+    public void StopAnimation()
+    {
+        _anim.enabled = false;
+    }
+    
+    public void HitEnd()
+    {
+        _anim.SetBool("Hit", false);
     }
 
 }
