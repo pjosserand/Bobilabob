@@ -334,7 +334,7 @@ PrefabInstance:
     - target: {fileID: 4267277598015986001, guid: 4ea19043b01836e4eae86d89105ce055,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21407223
+      value: 0.82
       objectReference: {fileID: 0}
     - target: {fileID: 4267277598015986001, guid: 4ea19043b01836e4eae86d89105ce055,
         type: 3}
@@ -344,7 +344,7 @@ PrefabInstance:
     - target: {fileID: 4267277598015986001, guid: 4ea19043b01836e4eae86d89105ce055,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.269239
+      value: 12.46
       objectReference: {fileID: 0}
     - target: {fileID: 4267277598015986001, guid: 4ea19043b01836e4eae86d89105ce055,
         type: 3}
@@ -1450,6 +1450,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394414604}
   m_Mesh: {fileID: 6581110948711264162, guid: 303121b224f568449b2b894dfc3fd1b3, type: 3}
+--- !u!1 &410007628 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1516873248110258948, guid: 68835db4bd81f50409bc8688564d8b3a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1778660270}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &410007631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410007628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2314aa353a02c604aa93d5ad4da1ea04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 1778660273}
 --- !u!1 &414183779
 GameObject:
   m_ObjectHideFlags: 0
@@ -7783,6 +7802,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1516873247730911392, guid: 68835db4bd81f50409bc8688564d8b3a,
+        type: 3}
+      propertyPath: m_Acceleration
+      value: 644
+      objectReference: {fileID: 0}
+    - target: {fileID: 1516873247730911392, guid: 68835db4bd81f50409bc8688564d8b3a,
+        type: 3}
+      propertyPath: m_AngularSpeed
+      value: 544.35
+      objectReference: {fileID: 0}
     - target: {fileID: 1516873247730911395, guid: 68835db4bd81f50409bc8688564d8b3a,
         type: 3}
       propertyPath: m_Name
