@@ -30350,8 +30350,7 @@ AnimationClip:
   - time: 0.6
     functionName: MakeDamage
     data: 
-    objectReferenceParameter: {fileID: 1516873247730911395, guid: 68835db4bd81f50409bc8688564d8b3a,
-      type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
