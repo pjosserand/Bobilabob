@@ -8,7 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     public int lifePoints;
     public int maxLifePoints;
-    
+    public Material portalMaterial;
+
     [Range(1f, 50f)] [SerializeField] private float _rayMaxDistance = 20f;
 
     [SerializeField] LayerMask _groundLayer;
@@ -26,12 +27,15 @@ public class PlayerController : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         maxLifePoints = 18;
         lifePoints = maxLifePoints;
+
     }
 
     private void Update()
     {
         _animator.SetFloat("Velocity", Math.Abs(_agent.velocity.x + _agent.velocity.z));
-        Shader.SetGlobalVector("worldSpace_PlayerPos",transform.position);
+		Shader.SetGlobalVector("_PlayerPos",transform.position);
+        //int _PlayerPos_ID = Shader.PropertyToID("_PlayerPos");
+		//portalMaterial.SetVector(_PlayerPos_ID,transform.position);
     }
 
     void OnRightClick(InputValue prminput)
@@ -45,7 +49,7 @@ public class PlayerController : MonoBehaviour
             CancelInvoke();
         }
     }
-    
+
     void OnLeftClick(InputValue prminput)
         {
             //Debug.Log("Left clicked");
@@ -66,7 +70,7 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("isAttacking", isAttacking);
         Invoke(nameof(stopAttack),1f);
     }
-    
+
     void stopAttack()
     {
        //Debug.Log("Stop Attack !!!");
@@ -77,13 +81,13 @@ public class PlayerController : MonoBehaviour
        }
        _animator.SetBool("isAttacking", isAttacking);
     }
-    
+
     void move()
     {
         if(!isAttacking)
         {
             Ray cameraRay = _mainCamera.ScreenPointToRay(Input.mousePosition);
-        
+
                 RaycastHit hitInfo;
                 if (Physics.Raycast(cameraRay, out hitInfo, _rayMaxDistance, _groundLayer.value))
                 {
@@ -134,7 +138,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Door"))
         {
             if (!isAttacking) return;
-            other.gameObject.GetComponent<DoorScript>().takeDamage(damage);
+            other.gameObject.GetComponent<DoorScript>().TakeDamage(damage);
         }
         else if (other.CompareTag("Enemy"))
         {

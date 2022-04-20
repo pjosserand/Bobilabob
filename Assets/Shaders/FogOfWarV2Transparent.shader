@@ -1,10 +1,9 @@
-Shader "Learning/Unlit/FogOfWarV2"
+Shader "Learning/Unlit/FogOfWarV2Transparent"
 {
     Properties
     {   
         // NOM_VARIABLE("NOM_AFFICHE_DANS_L'INSPECTOR", Shaderlab type) = defaultValue
         _Albedo("Main Texture",2D) = "white"{}
-        //_Normal("Normal",2D) = "white"{}
         _Distortion("Distortion Texture", 2D) = "white"{}
         _Radius("Fog of War Radius",Range(0.0,7.0)) = 0.0
         _DiscolorationDarkness("Fog of War Darkness",Range(1.0,0.0)) = 0.0
@@ -13,16 +12,21 @@ Shader "Learning/Unlit/FogOfWarV2"
     
     SubShader
     {
+        
+        Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        Cull front 
+        LOD 100
+        
         Pass
         {
-            
-            name "FogOfWarV2"
 			HLSLPROGRAM
             #pragma vertex vert  
             #pragma fragment frag
 
             #include "UnityCG.cginc"
-            sampler2D _Albedo, _Distortion; //_Normal;
+            sampler2D _Albedo, _Distortion;
 			float3 worldSpace_PlayerPos;
 			float _Radius, _DiscolorationDarkness,  _Threshold;
 			
@@ -30,7 +34,7 @@ Shader "Learning/Unlit/FogOfWarV2"
             {
                 float4 vertex : POSITION;
 			    float2 uv: TEXCOORD0;
-			    //float3 normal : NORMAL;
+			    float3 normal : NORMAL;
             };
 			
             struct v2f
@@ -38,9 +42,7 @@ Shader "Learning/Unlit/FogOfWarV2"
                 float4 vertex : SV_POSITION;
                 float2 uv: TEXCOORD0;
                 float4 vertexWorldSpace : TEXCOORD1;
-                //float3 normal : TEXTCOORD1;
-                float4 color : COLOR;
-                
+                //float4 Color : COLOR;
             };
 
             v2f vert (vertexInput v)
@@ -49,17 +51,13 @@ Shader "Learning/Unlit/FogOfWarV2"
 	            o.vertex = mul(UNITY_MATRIX_MVP, v.vertex);
                 o.vertexWorldSpace = mul(unity_ObjectToWorld,v.vertex);
                 o.uv=v.uv;
-                //o.normal = UnityObjectToWorldNormal(v.normal);
                 return o;
             }
 
             float4 frag(v2f i) : SV_Target
             {
-                //half ReNormFactor = 1.0 / length(i.normal);
                 float4 Color = (0,0,0,0);
                 float4 Texture = tex2D(_Albedo, i.uv);
-
-                
                 
                 float dist = distance(worldSpace_PlayerPos,i.vertexWorldSpace);
                 if(dist<=_Radius)
