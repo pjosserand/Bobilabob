@@ -15,8 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask _groundLayer;
     [SerializeField] ParticleSystem _particles;
     [SerializeField] Material _bloodScreen;
-    
 
+    public GameManager gmInstance;
     private Camera _mainCamera;
     private NavMeshAgent _agent;
     public Animator _animator;
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         maxLifePoints = 4;
         lifePoints = maxLifePoints;
         _bloodScreen.SetFloat("_Power", 5.0f);
-
+        gmInstance = GameManager.Instance;
     }
 
     private void Update()
@@ -56,11 +56,20 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnLeftClick(InputValue prminput)
-        {
-            //Debug.Log("Left clicked");
-            attack();
-        }
+    {
+        //Debug.Log("Left clicked");
+        attack();
+    }
 
+    void OnSpace(InputValue prminput)
+    {
+        if (prminput.isPressed)
+        {
+            Debug.Log("Set paused");
+            gmInstance.Pause();   
+        }
+    }
+    
     void attack()
     {
         Debug.Log("attack");
@@ -161,6 +170,10 @@ public class PlayerController : MonoBehaviour
             UpdateLife(1);
             other.gameObject.SetActive(false);
         }
+        else if (other.CompareTag("Goal"))
+        {
+            gmInstance.Win();
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -182,6 +195,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("dead");
         _animator.SetBool("Dead", true);
         _agent.SetDestination(transform.position);
+        gmInstance.GameOver();
         //DeathStuff
     }
 
