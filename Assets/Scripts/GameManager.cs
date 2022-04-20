@@ -32,13 +32,14 @@ public class GameManager : MonoBehaviour
         _win = -1;
     }
 
-    void ExitGame()
+    public void ExitGame()
     {
         Application.Quit();
     }
     public void Win()
     {
         _win = 1;
+        Debug.Log("You win !!!");
     }
 
     public void Pause()
@@ -54,11 +55,7 @@ public class GameManager : MonoBehaviour
         PauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
     }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+    
     // Update is called once per frame
     void Update()
     {

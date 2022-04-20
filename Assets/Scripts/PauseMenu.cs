@@ -20,6 +20,6 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        
+        gmInstance.ExitGame();
     }
 }
