@@ -8,14 +8,10 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Tile01 3
-  m_Shader: {fileID: 4800000, guid: d2e7a0af9367b354baea6b28d6609b4d, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f14dae1967b4f0b4e8e1d239687fe2fa,
+    type: 3}
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _EMISSION
-  - _METALLICGLOSSMAP
-  - _METALLICSPECGLOSSMAP
-  - _NORMALMAP
-  - _SPECGLOSSMAP
+  m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -61,8 +57,16 @@ Material:
         m_Texture: {fileID: 2800000, guid: f1de0460afd04b642a261aef2e069024, type: 3}
         m_Scale: {x: 20.1, y: 26}
         m_Offset: {x: 0, y: -1}
+    - _Metalic:
+        m_Texture: {fileID: 2800000, guid: 300acc0be6e47024690a4baa38095d44, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: 300acc0be6e47024690a4baa38095d44, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: 9f55a5c8d4742cc47954204866783093, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -110,8 +114,9 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _QueueControl: 0
     - _QueueOffset: 0
-    - _Radius: 4.5
+    - _Radius: 20
     - _ReceiveShadows: 1
     - _Smoothness: 0.705
     - _SmoothnessTextureChannel: 0
@@ -126,7 +131,9 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _Tiling: {r: -27.18, g: -52.44, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5358076234242094934
 MonoBehaviour:
