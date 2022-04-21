@@ -68,7 +68,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ApplePickedUp: 1
+    - _ApplePickedUp: 0
     - _BandWidth: 10
     - _Coloration_Hardness: 0.92
     - _EmissionStrength: 1
