@@ -187,6 +187,8 @@ public class PlayerController : MonoBehaviour
         {
             UpdateLife(1);
             other.gameObject.SetActive(false);
+            StartCoroutine(Health());
+
         }
         else if (other.CompareTag("Shield"))
         {
@@ -197,6 +199,14 @@ public class PlayerController : MonoBehaviour
         {
             gmInstance.Win();
         }
+    }
+
+    IEnumerator Health()
+    {
+        Shader.SetGlobalFloat("_ApplePickedUp",1);
+        yield return new WaitForSeconds(1f);
+        Shader.SetGlobalFloat("_ApplePickedUp",0);
+        
     }
 
     private void OnTriggerStay(Collider other)
