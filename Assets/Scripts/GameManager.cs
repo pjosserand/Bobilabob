@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     }
     public void Win()
     {
-        Debug.Log("You win !!!");
+        Restart();
     }
 
     public void Pause()
