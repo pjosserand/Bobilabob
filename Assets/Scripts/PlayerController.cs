@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask _groundLayer;
     [SerializeField] ParticleSystem _particles;
     [SerializeField] Material _bloodScreen;
+    [SerializeField] GameObject _Shield;
 
     public GameManager gmInstance;
     private Camera _mainCamera;
@@ -22,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public Animator _animator;
     public EnemyBehaviour _enemy;
     private bool isAttacking;
+    private bool shieldActived;
     private int damage = 1;
     private Vector3 _destinationPres;
 
@@ -33,6 +36,8 @@ public class PlayerController : MonoBehaviour
         lifePoints = maxLifePoints;
         _bloodScreen.SetFloat("_Power", 5.0f);
         gmInstance = GameManager.Instance;
+        _Shield.SetActive(false);
+        shieldActived = false;
     }
 
     private void Update()
@@ -119,22 +124,26 @@ public class PlayerController : MonoBehaviour
 
     public void Damage()
     {
-        Debug.Log("hit");
-        lifePoints -= 1;
-        _particles.Play();
-        UpdateBloodScreen();
-        if (lifePoints <= 0)
+        if (!shieldActived)
         {
-            Death();
-        }
-        else
-        {
-            _animator.SetBool("Hit", true);
+            Debug.Log("hit");
+            lifePoints -= 1;
+            _particles.Play();
+            UpdateBloodScreen();
+            if (lifePoints <= 0)
+            {
+                Death();
+            }
+            else
+            {
+                _animator.SetBool("Hit", true);
+            }
         }
     }
 
     void UpdateLife(int addToLife)
     {
+        StartCoroutine(RemoveShield());
         lifePoints += addToLife;
         if (lifePoints > maxLifePoints)
         {
@@ -145,6 +154,15 @@ public class PlayerController : MonoBehaviour
             Death();
         }
         UpdateBloodScreen();
+    }
+
+    IEnumerator RemoveShield()
+    {
+        shieldActived = true;
+        _Shield.SetActive(true);
+        yield return new WaitForSeconds(5);
+        shieldActived = false;
+        _Shield.SetActive(false);
     }
 
 

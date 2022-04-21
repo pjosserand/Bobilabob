@@ -371,6 +371,8 @@ MonoBehaviour:
     m_Bits: 64
   _particles: {fileID: 3250070811653991481}
   _bloodScreen: {fileID: 0}
+  _Shield: {fileID: 9141379047121927852}
+  gmInstance: {fileID: 0}
   _animator: {fileID: 1516873248110258970}
   _enemy: {fileID: 0}
 --- !u!114 &1516873247730911394
@@ -5915,7 +5917,7 @@ GameObject:
   - component: {fileID: 2530823887790805728}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
