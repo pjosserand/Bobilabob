@@ -67,7 +67,7 @@ Material:
     - _CastShadows: 1
     - _Cull: 0
     - _Dissolve: 2
-    - _DissolveAmmount: 0.7
+    - _DissolveAmmount: 0.23
     - _DissolveFactor: 0.13
     - _DstBlend: 0
     - _GSPower: 0.1

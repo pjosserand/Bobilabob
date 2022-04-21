@@ -50,7 +50,7 @@ Material:
     - _GSPower: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Radius: 20
+    - _Radius: 6.5
     m_Colors:
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
