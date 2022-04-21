@@ -11,9 +11,4 @@ public class JointScript : MonoBehaviour
     {
         _player.HitEnd();
     }
-
-    public void StopAttack()
-    {
-        _player.StopAttack();
-    }
 }

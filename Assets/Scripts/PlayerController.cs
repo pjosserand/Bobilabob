@@ -95,10 +95,10 @@ public class PlayerController : MonoBehaviour
          //Debug.Log("Attack !!!");
          isAttacking=true;
         _animator.SetBool("isAttacking", isAttacking);
-        Invoke(nameof(StopAttack),1f);
+        Invoke(nameof(stopAttack),1f);
     }
 
-    public void StopAttack()
+    void stopAttack()
     {
        //Debug.Log("Stop Attack !!!");
        isAttacking=false;
