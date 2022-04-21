@@ -15,7 +15,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        gmInstance.Resume();
+        Debug.Log("button");
+        gmInstance.Pause();
     }
 
     public void QuitGame()

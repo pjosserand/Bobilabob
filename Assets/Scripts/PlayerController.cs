@@ -70,10 +70,9 @@ public class PlayerController : MonoBehaviour
     {
         if (prminput.isPressed)
         {
-            UpdateLife(-1);
-            /*
-            Debug.Log("Set paused");
-            gmInstance.Pause();   */
+           // Debug.Log("Set paused");
+           Debug.Log("space");
+           gmInstance.Pause();
         }
     }
     

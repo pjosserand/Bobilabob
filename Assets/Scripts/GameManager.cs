@@ -7,8 +7,6 @@ public class GameManager : MonoBehaviour
     private int _win;
     private bool _isPaused;
     public GameObject PauseMenu;
-    public Slider Healthbar;
-    //public  UIManager uiManagerInstance;
 
     void Awake(){
         if (Instance != this && Instance != null)
@@ -54,17 +52,5 @@ public class GameManager : MonoBehaviour
     {
         PauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
-    }
-
-    public void UpdateHealthbar(float life, float maxlife)
-    {
-/*
-        float percent = life / maxlife;
-        Healthbar.value = percent;*/
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
