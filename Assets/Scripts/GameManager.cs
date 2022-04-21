@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private int _win;
     private bool _isPaused;
     public GameObject PauseMenu;
     public GameObject GameOverMenu;
@@ -22,12 +21,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _win = 0;
     }
 
     public void GameOver()
     {
-        _win = -1;
         GameOverMenu.SetActive(true);
     }
 
@@ -42,7 +39,6 @@ public class GameManager : MonoBehaviour
     }
     public void Win()
     {
-        _win = 1;
         Debug.Log("You win !!!");
     }
 
