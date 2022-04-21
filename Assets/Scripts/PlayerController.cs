@@ -178,7 +178,9 @@ public class PlayerController : MonoBehaviour
             case 1:
                 _bloodScreen.SetFloat("_Power", 0.5f);
                 break;
-
+            default :
+                _bloodScreen.SetFloat("_Power", 5f);
+                break;
         }
     }
     private void OnTriggerEnter(Collider other)
