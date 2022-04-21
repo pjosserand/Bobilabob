@@ -5933,7 +5933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceptanceRadius: 1
-  detectionRange: 20
+  detectionRange: 30
   _player: {fileID: 0}
   _particles: {fileID: 3561498145879915629}
 --- !u!136 &3491339681751745519

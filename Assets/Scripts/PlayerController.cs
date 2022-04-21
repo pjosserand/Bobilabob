@@ -187,7 +187,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Apple"))
         {
-            UpdateLife(1);
+            UpdateLife(2);
             other.gameObject.SetActive(false);
             StartCoroutine(Health());
 
