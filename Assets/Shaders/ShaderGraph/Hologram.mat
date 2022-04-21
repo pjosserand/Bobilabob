@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2760493774689310519
+--- !u!114 &-268805859006742066
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HologramMat
+  m_Name: Hologram
   m_Shader: {fileID: -6465566751694194690, guid: fcde11a50a1aac54ea5c4900b41024e7,
     type: 3}
   m_ValidKeywords: []
@@ -35,7 +35,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _HologramTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c3c36bc29b8067448bfb06aa07269955, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTexture:
@@ -43,11 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTexture:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_e94b3df2e6c94b999ab238e955e4c98e_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 94c473c9137744d7eabd829f1150da8d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5fcc4f296fc8cc4439a97ea50cd42366, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -64,10 +60,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _FresnelPower: 2
+    - _HologramSpeed: 0.1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Speed: 0.5
+    - _Speed: 0.2
     m_Colors:
-    - _BaseColor: {r: 0.38431373, g: 0.7058824, b: 0.6521482, a: 0}
+    - _BaseColor: {r: 0.10760058, g: 0.5849056, b: 0.5269153, a: 1}
+    - _FresnelColor: {r: 2, g: 0.44705883, b: 0, a: 0}
     - _HologramTexTiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
