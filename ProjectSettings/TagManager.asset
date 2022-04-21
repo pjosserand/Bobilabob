@@ -8,6 +8,7 @@ TagManager:
   - Apple
   - Enemy
   - Goal
+  - Shield
   layers:
   - Default
   - TransparentFX

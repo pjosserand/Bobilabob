@@ -58,9 +58,9 @@ public class GameManager : MonoBehaviour
 
     public void UpdateHealthbar(float life, float maxlife)
     {
-
+/*
         float percent = life / maxlife;
-        Healthbar.value = percent;
+        Healthbar.value = percent;*/
     }
     // Update is called once per frame
     void Update()

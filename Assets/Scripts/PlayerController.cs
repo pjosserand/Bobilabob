@@ -145,7 +145,6 @@ public class PlayerController : MonoBehaviour
 
     void UpdateLife(int addToLife)
     {
-        StartCoroutine(RemoveShield());
         lifePoints += addToLife;
         if (lifePoints > maxLifePoints)
         {
@@ -155,7 +154,6 @@ public class PlayerController : MonoBehaviour
         {
             Death();
         }
-        gmInstance.UpdateHealthbar(lifePoints,maxLifePoints);
         UpdateBloodScreen();
     }
 
@@ -189,6 +187,11 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Apple"))
         {
             UpdateLife(1);
+            other.gameObject.SetActive(false);
+        }
+        else if (other.CompareTag("Shield"))
+        {
+            StartCoroutine(RemoveShield());
             other.gameObject.SetActive(false);
         }
         else if (other.CompareTag("Goal"))
