@@ -13,6 +13,11 @@ public class PauseMenu : MonoBehaviour
 
     // Update is called once per frame
 
+    public void Restart()
+    {
+        gmInstance.Restart();
+    }
+    
     public void Resume()
     {
         Debug.Log("button");

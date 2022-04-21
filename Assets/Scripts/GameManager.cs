@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private int _win;
     private bool _isPaused;
     public GameObject PauseMenu;
-
+    public GameObject GameOverMenu;
     void Awake(){
         if (Instance != this && Instance != null)
         {
@@ -28,6 +28,12 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         _win = -1;
+        GameOverMenu.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void ExitGame()
