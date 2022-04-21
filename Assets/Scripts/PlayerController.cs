@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerController : MonoBehaviour
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private bool shieldActived;
     private int damage = 1;
     private Vector3 _destinationPres;
+
+    public CinemachineImpulseSource _screenShake;
 
     void Start()
     {
@@ -118,6 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!shieldActived)
         {
+            _screenShake.GenerateImpulse();
             Debug.Log("hit");
             lifePoints -= 1;
             _particles.Play();
