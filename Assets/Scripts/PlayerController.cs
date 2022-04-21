@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         Invoke(nameof(stopAttack),1f);
     }
 
-    void stopAttack()
+    public void stopAttack()
     {
        //Debug.Log("Stop Attack !!!");
        isAttacking=false;
