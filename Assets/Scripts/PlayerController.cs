@@ -67,28 +67,22 @@ public class PlayerController : MonoBehaviour
     {
         if (prminput.isPressed)
         {
-           // Debug.Log("Set paused");
-           Debug.Log("space");
            gmInstance.Pause();
         }
     }
     
     void attack()
     {
-        Debug.Log("attack");
-        //Stop Moving Character
         if (_agent.destination != null)
         {
             _destinationPres = _agent.destination;
         }
-
         if (_enemy != null)
         {
             _enemy.TakeDamage();
         }
         _agent.SetDestination(transform.position);
         //Call animations
-         //Debug.Log("Attack !!!");
          isAttacking=true;
         _animator.SetBool("isAttacking", isAttacking);
         Invoke(nameof(stopAttack),1f);
