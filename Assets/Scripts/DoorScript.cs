@@ -23,14 +23,14 @@ public class DoorScript : MonoBehaviour
         life = 2;
         coolDown = 0.0f;
         maxCoolDown = 1.0f;
-        maxDissolveTime = 1.0f;
+        maxDissolveTime = 0.7f;
         dissolveTime = maxDissolveTime+0.1f;
         updateDissolveName = "_DissolveAmmount";
         _doorObstacle = transform.GetChild(1).gameObject.GetComponent<NavMeshObstacle>();
         _doorMat = transform.GetChild(1).gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material;
         _glassMat = transform.GetChild(1).gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material;
-        _doorMat.SetFloat(updateDissolveName,-0.1f);
-        _glassMat.SetFloat(updateDissolveName,-0.1f);
+        _doorMat.SetFloat(updateDissolveName,0.2f);
+        _glassMat.SetFloat(updateDissolveName,0.01f);
 
     }
 
