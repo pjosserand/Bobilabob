@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(NavMeshAgent))]
 public class PlayerController : MonoBehaviour
 {
-    public int lifePoints;
-    public int maxLifePoints;
+    public float lifePoints;
+    public float maxLifePoints;
     public Material portalMaterial;
 
     [Range(1f, 50f)] [SerializeField] private float _rayMaxDistance = 20f;
@@ -65,8 +65,10 @@ public class PlayerController : MonoBehaviour
     {
         if (prminput.isPressed)
         {
+            UpdateLife(-1);
+            /*
             Debug.Log("Set paused");
-            gmInstance.Pause();   
+            gmInstance.Pause();   */
         }
     }
     
@@ -144,6 +146,7 @@ public class PlayerController : MonoBehaviour
         {
             Death();
         }
+        gmInstance.UpdateHealthbar(lifePoints,maxLifePoints);
         UpdateBloodScreen();
     }
 
