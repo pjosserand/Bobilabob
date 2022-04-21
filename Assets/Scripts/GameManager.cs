@@ -16,13 +16,6 @@ public class GameManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-    
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     public void GameOver()
     {
         GameOverMenu.SetActive(true);

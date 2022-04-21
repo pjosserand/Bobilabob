@@ -18,11 +18,12 @@ public class PauseMenu : MonoBehaviour
         gmInstance.Restart();
     }
     
+    /*
     public void Resume()
     {
         Debug.Log("button");
         gmInstance.Pause();
-    }
+    }*/
 
     public void QuitGame()
     {
